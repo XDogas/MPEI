@@ -1,0 +1,5 @@
+A função de hash conseguiu o objectivo de espalhar as chaves/strings pelo array ?
+RESPOSTA: Sim a função de hash conseguiu espalhar as chaves/strings pelo array, apesar de terem havido algumas colisões.
+
+Temos de facto uma distribuição uniforme das chaves pelos índices do array ?
+RESPOSTA: Pela análise do gráficos podemos dizer que o número de posições com 2 ou mais chaves é reduzido, logo, pode-se dizer que a distribuição foi uniforme.
