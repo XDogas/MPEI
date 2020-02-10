@@ -1,0 +1,209 @@
+package Files;
+
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+
+import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+public class ClientPanel extends JPanel {
+	
+	private JLabel nameLabel;
+	private JLabel ccLabel;
+	private JTextField nameField;
+	private JTextField ccField;
+	private JComboBox bornDayCombo;
+	private JComboBox bornMonthCombo;
+	private JComboBox bornYearCombo;
+	private JComboBox genderCombo;
+	
+	public ClientPanel() {
+		Dimension dim = getPreferredSize();
+		dim.width = 250;
+		
+		nameLabel = new JLabel("Nome: ");
+		nameField = new JTextField(10);
+		ccLabel = new JLabel("Cartão de Cidadão: ");
+		ccField = new JTextField(10);
+		
+		bornDayCombo = new JComboBox();
+		// Set up ComboBox
+		DefaultComboBoxModel bornDayModel = new DefaultComboBoxModel();
+		for(int d=1; d<=31; d++) bornDayModel.addElement(d);
+		bornDayCombo.setModel(bornDayModel);		
+		
+		bornMonthCombo = new JComboBox();
+		// Set up ComboBox
+		DefaultComboBoxModel bornMonthModel = new DefaultComboBoxModel();
+		bornMonthModel.addElement("Janeiro");
+		bornMonthModel.addElement("Fevereiro");
+		bornMonthModel.addElement("Março");
+		bornMonthModel.addElement("Abril");
+		bornMonthModel.addElement("Maio");
+		bornMonthModel.addElement("Junho");
+		bornMonthModel.addElement("Julho");
+		bornMonthModel.addElement("Agosto");
+		bornMonthModel.addElement("Setembro");
+		bornMonthModel.addElement("Outubro");
+		bornMonthModel.addElement("Novembro");
+		bornMonthModel.addElement("Dezembro");		
+		bornMonthCombo.setModel(bornMonthModel);
+		
+		bornYearCombo = new JComboBox();
+		// Set up ComboBox
+		DefaultComboBoxModel bornYearModel = new DefaultComboBoxModel();
+		for(int y=2020; y>=1900; y--) {
+			bornYearModel.addElement(y);			
+		}
+		bornYearCombo.setModel(bornYearModel);
+		
+		genderCombo = new JComboBox();
+		// Set up ComboBox
+		DefaultComboBoxModel genderModel = new DefaultComboBoxModel();
+		genderModel.addElement("Masculino");
+		genderModel.addElement("Feminino");
+		genderCombo.setModel(genderModel);
+		
+		
+		
+		
+		
+		
+		
+		Border innerBorder = BorderFactory.createTitledBorder("Adicionar Cliente");
+		Border outerBorder = BorderFactory.createEmptyBorder(5,5,5,5);		
+		this.setBorder(BorderFactory.createCompoundBorder(outerBorder, innerBorder));
+		
+		layoutComponents();
+	}
+
+	public void layoutComponents() {
+		
+		this.setLayout(new GridBagLayout());
+		
+		GridBagConstraints gc = new GridBagConstraints();
+		
+		// Primeira linha //////////////////////////////////////////////////////////////////////
+		
+		gc.gridy = 0;
+		
+		gc.weightx = 1;		// comprimento da primeira linha comparado com a altura
+		gc.weighty = 0.01;	// altura da primeira linha comparado com o comprimento
+		
+		gc.gridx = 0;
+		gc.fill = GridBagConstraints.NONE;	// espaço da célula
+		gc.anchor = GridBagConstraints.LINE_END;	// Dentro da primeira linha, o label vai ficar na margem da direita, na primeira coluna
+		gc.insets = new Insets(0,0,0,5);	// Adiciona 5 pixels do lado direito do label
+		this.add(nameLabel, gc);
+		
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.LINE_START;	// Dentro da primeira linha, o label vai ficar na margem da esquerda, na segunda coluna
+		gc.insets = new Insets(0,0,0,0);	// Não adiciona nenhum pixel á volta do label
+		this.add(nameField, gc);
+		
+		// Segunda linha //////////////////////////////////////////////////////////////////////
+		
+		gc.gridy++;
+		
+		gc.weightx = 1;		// comprimento da segunda linha comparado com a altura
+		gc.weighty = 0.02;	// altura da segunda linha comparado com o comprimento
+		
+		gc.gridx = 0;
+		gc.anchor = GridBagConstraints.LINE_END;	// Dentro da segunda linha, o label vai ficar na margem da direita, na primeira coluna
+		gc.insets = new Insets(0,0,0,5);	// Adiciona 5 pixels do lado direito do label
+		this.add(ccLabel, gc);
+		
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.LINE_START;	// Dentro da segunda linha, o label vai ficar na margem da esquerda, na segunda coluna
+		gc.insets = new Insets(0,0,0,0);	// Não adiciona nenhum pixel á volta do label
+		this.add(ccField, gc);
+		
+		// Terceira linha //////////////////////////////////////////////////////////////////////
+		
+		gc.gridy++;
+		
+		gc.weightx = 1;		// comprimento da linha comparado com a altura
+		gc.weighty = 0.005;		// altura da linha comparado com o comprimento
+		
+		gc.gridx = 0;
+		gc.anchor = GridBagConstraints.FIRST_LINE_START;	// Dentro da linha, o label vai ficar no topo e na margem da direita, na primeira coluna
+		this.add(new JLabel("Data de nascimento: "), gc);
+		
+		// Quarta linha //////////////////////////////////////////////////////////////////////
+		
+		gc.gridy++;
+		
+		gc.weightx = 1;		// comprimento da linha comparado com a altura
+		gc.weighty = 0.005;		// altura da linha comparado com o comprimento
+		
+		gc.gridx = 0;
+		gc.anchor = GridBagConstraints.FIRST_LINE_END;	// Dentro da linha, o label vai ficar no topo e na margem da direita, na primeira coluna
+		gc.insets = new Insets(0,0,0,5);	// Adiciona 5 pixels do lado direito do label
+		this.add(new JLabel("Dia: "), gc);
+		
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.FIRST_LINE_START;	// dentro da linha, o botão vai ficar logo no topo, e no inicio da segunda coluna
+		gc.insets = new Insets(0,0,0,0);	// Não adiciona nenhum pixel á volta do label
+		this.add(bornDayCombo, gc);
+		
+		// Quinta linha //////////////////////////////////////////////////////////////////////
+		
+		gc.gridy++;
+		
+		gc.weightx = 1;		// comprimento da linha comparado com a altura
+		gc.weighty = 0.005;		// altura da linha comparado com o comprimento
+		
+		gc.gridx = 0;
+		gc.anchor = GridBagConstraints.FIRST_LINE_END;	// Dentro da linha, o label vai ficar no topo e na margem da direita, na primeira coluna
+		gc.insets = new Insets(0,0,0,5);	// Adiciona 5 pixels do lado direito do label
+		this.add(new JLabel("Mês: "), gc);
+		
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.FIRST_LINE_START;	// dentro da linha, o botão vai ficar logo no topo, e no inicio da segunda coluna
+		gc.insets = new Insets(0,0,0,0);	// Não adiciona nenhum pixel á volta do label
+		this.add(bornMonthCombo, gc);
+		
+		// Sexta linha //////////////////////////////////////////////////////////////////////
+		
+		gc.gridy++;
+		
+		gc.weightx = 1;		// comprimento da linha comparado com a altura
+		gc.weighty = 0.02;		// altura da linha comparado com o comprimento
+		
+		gc.gridx = 0;
+		gc.anchor = GridBagConstraints.FIRST_LINE_END;	// Dentro da linha, o label vai ficar no topo e na margem da direita, na primeira coluna
+		gc.insets = new Insets(0,0,0,5);	// Adiciona 5 pixels do lado direito do label
+		this.add(new JLabel("Ano: "), gc);
+		
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.FIRST_LINE_START;	// dentro da linha, o botão vai ficar logo no topo, e no inicio da segunda coluna
+		gc.insets = new Insets(0,0,0,0);	// Não adiciona nenhum pixel á volta do label
+		this.add(bornYearCombo, gc);
+		
+		// Sétima linha //////////////////////////////////////////////////////////////////////
+		
+		gc.gridy++;
+		
+		gc.weightx = 1;		// comprimento da linha comparado com a altura
+		gc.weighty = 0.2;		// altura da linha comparado com o comprimento
+		
+		gc.gridx = 0;
+		gc.anchor = GridBagConstraints.FIRST_LINE_END;	// Dentro da linha, o label vai ficar no topo e na margem da direita, na primeira coluna
+		gc.insets = new Insets(0,0,0,5);	// Adiciona 5 pixels do lado direito do label
+		this.add(new JLabel("Género: "), gc);
+		
+		gc.gridx = 1;
+		gc.anchor = GridBagConstraints.FIRST_LINE_START;	// dentro da linha, o botão vai ficar logo no topo, e no inicio da segunda coluna
+		gc.insets = new Insets(0,0,0,0);	// Não adiciona nenhum pixel á volta do label
+		this.add(genderCombo, gc);
+		
+	}
+
+}

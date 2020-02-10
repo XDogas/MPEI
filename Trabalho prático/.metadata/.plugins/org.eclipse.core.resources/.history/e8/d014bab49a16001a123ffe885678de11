@@ -1,0 +1,39 @@
+package Files;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
+import javax.swing.JFrame;
+
+public class MainFrame extends JFrame {
+	
+	private ClientPanel clientPanel;
+	
+	public MainFrame() {
+		super("Hábitos de compra");
+		
+		this.setLayout(new BorderLayout());
+		
+		clientPanel = new ClientPanel();
+		
+		this.add(clientPanel, BorderLayout.WEST);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		this.setMinimumSize(new Dimension(500,400));
+		this.setSize(600,500);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.setVisible(true);
+	}
+
+}

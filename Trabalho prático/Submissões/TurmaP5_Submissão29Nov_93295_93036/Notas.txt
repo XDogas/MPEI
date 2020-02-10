@@ -1,0 +1,1 @@
+De momento estamos a trabalhar no módulo MinHash para implementarmos no nosso trabalho prático.
